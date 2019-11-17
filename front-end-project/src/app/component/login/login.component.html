@@ -1,4 +1,20 @@
-<p>
-  login works!
-</p>
+<mat-form-field>
+  <input matInput class="full-width" type="text" [placeholder]="placeHolder" [(ngModel)]="userName"
+         (blur)="checkuserName();showCheckResult()">
+</mat-form-field>
+<div *ngIf="isShowCheckResult">
+  <div *ngIf="checkuserName()">
+    <span style="color: green">Welcome back! </span><br>
+    <mat-form-field>
+      <input matInput type="password" placeholder="input password" [(ngModel)]="password">
+    </mat-form-field>
+    <span *ngIf="isShowPassword">{{password}}</span>
+    <button type="button" (click)="switchIfShowPassword()">show password</button>
 
+  </div>
+  <span *ngIf="!checkuserName()" style="color: red">No such user name.</span>
+</div>
+
+<hr>
+<strong>test date show zone</strong>
+<div>{{userName}}</div>
